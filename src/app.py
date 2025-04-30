@@ -9,6 +9,7 @@ import matplotlib.dates as mdates
 BASE_DIR = os.path.dirname(__file__)
 csv_path = os.path.join(BASE_DIR, '../data/covid_19_indonesia_time_series_all_clean.csv')
 df = pd.read_csv(csv_path)
+df['Date'] = pd.to_datetime(df['Date'])
 
 # Membuat pivot untuk heatmap
 df_pivot = df.pivot_table(values='New Cases', index='Location', columns='Date', aggfunc='sum')
